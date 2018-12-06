@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="GenericSensor contiene solo&#xD;&#xA;la logica essenziale per la&#xD;&#xA;mappatura degli ingressi e&#xD;&#xA;l'esecuzione delle notifiche&#xD;&#xA;in modalità polling o push&#xD;&#xA;&#xD;&#xA;L'aggiornamento del valore&#xD;&#xA;contenuto e la scalatura del&#xD;&#xA;valore in uscita sono delegati&#xD;&#xA;all'esterno">
+    <Position X="9.938" Y="1.688" Height="2.104" Width="2.242" />
+  </Comment>
+  <Class Name="doberSoft.protoMetrics02.CommDrivers.HttpCommDriver" BaseTypeListCollapsed="true">
+    <Position X="8" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommDrivers\HttpCommDriver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.112" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.CommDrivers.MqttCommDriver" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>CommDrivers\MqttCommDriver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.143" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.GenericSensor&lt;Tin, Tout&gt;" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAwCAAAAIAAAAoAAAAAAAAQAAEAAAAAAAAAgAQAAAAA=</HashCode>
+      <FileName>Sensors\GenericSensor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.31" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.LinearScale" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Sensors\LinearScale.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.143" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.LinearScaleParameters" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAAAABA=</HashCode>
+      <FileName>Sensors\LinearScaleParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.205" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.Position">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAEAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sensors\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.PositionScale" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Sensors\PositionScale.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.SensorEventArgs&lt;Tin, Tout&gt;">
+    <Position X="4" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sensors\SensorEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Utils.Strings">
+    <Position X="1" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Utils.Actions">
+    <Position X="1" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="doberSoft.protoMetrics02.Program">
+    <Position X="1" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAIAAAAAAAABAEACAABAAAAAI=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="doberSoft.protoMetrics02.CommDrivers.ICommDriver">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommDrivers\ICommDriver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="doberSoft.protoMetrics02.Sensors.IScale&lt;Tin, Tout&gt;">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Sensors\IScale.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="doberSoft.protoMetrics02.Sensors.IScaleParameters">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAAAABA=</HashCode>
+      <FileName>Sensors\IScaleParameters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="doberSoft.protoMetrics02.Sensors.ISensor&lt;Tin, Tout&gt;">
+    <Position X="4" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAIAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sensors\ISensor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
