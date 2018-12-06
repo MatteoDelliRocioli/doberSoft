@@ -1,0 +1,7 @@
+invio comandi, usare sessione persistente-->
+clean session--> true pub/sub classic
+		false, tiene traccia dei comandi non inviati a nessuno (funziona come una coda)
+
+con false, il broker tiene traccia di tutte le sessioni persistenti
+		memorizza tutti i messaggi con Qos 1 o 2 inviati mentre il client era disconnesso
+alla riconnessione, inviarli al client

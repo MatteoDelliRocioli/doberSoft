@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'protoDash01';
+  //https://tutorialedge.net/typescript/angular/angular-websockets-tutorial/
 }
