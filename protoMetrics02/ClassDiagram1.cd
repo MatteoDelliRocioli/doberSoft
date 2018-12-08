@@ -19,14 +19,6 @@
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.143" Collapsed="true" />
   </Class>
-  <Class Name="doberSoft.protoMetrics02.Sensors.GenericSensor&lt;Tin, Tout&gt;" BaseTypeListCollapsed="true">
-    <Position X="6.75" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAwCAAAAIAAAAoAAAAAAAAQAAEAAAAAAAAAgAQAAAAA=</HashCode>
-      <FileName>Sensors\GenericSensor.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Orientation="Left" Position="0.31" Collapsed="true" />
-  </Class>
   <Class Name="doberSoft.protoMetrics02.Sensors.LinearScale" BaseTypeListCollapsed="true">
     <Position X="11.25" Y="5" Width="1.75" />
     <TypeIdentifier>
@@ -86,6 +78,14 @@
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="doberSoft.protoMetrics02.Sensors.GenericSensor&lt;Tin, Tout&gt;" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAwCAAAAIAAAAoAAAAAAAAQAAEAAAAAAAAAgAQAAAAA=</HashCode>
+      <FileName>Sensors\GenericSensor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.31" Collapsed="true" />
+  </Class>
   <Interface Name="doberSoft.protoMetrics02.CommDrivers.ICommDriver">
     <Position X="4" Y="7.25" Width="1.5" />
     <TypeIdentifier>
@@ -110,7 +110,7 @@
   <Interface Name="doberSoft.protoMetrics02.Sensors.ISensor&lt;Tin, Tout&gt;">
     <Position X="4" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQCAAAAIAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAIAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Sensors\ISensor.cs</FileName>
     </TypeIdentifier>
   </Interface>

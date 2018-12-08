@@ -1,7 +1,13 @@
-﻿using System;
+﻿using doberSoft.protoMetrics02.Utils;
+using System;
 
 namespace doberSoft.protoMetrics02.Sensors
 {
+    // https://github.com/Microsoft/Windows-iotcore-samples/tree/master/Samples/TempForceSensor/CS
+    // https://blogs.msdn.microsoft.com/uk_faculty_connection/2018/04/30/temperature-sensing-and-control-using-raspberry-pi/
+    // https://stackoverflow.com/questions/5842339/how-to-trigger-event-when-a-variables-value-is-changed
+    // https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/ms743695(v=vs.100) 
+
 
     class GenericSensor<Tin, Tout> :ISensor<Tin, Tout>
     {
@@ -41,10 +47,24 @@ namespace doberSoft.protoMetrics02.Sensors
             return ScaleFunction.Scale(Value);
         }
 
-        public void Update()
+        private void Update()
         {
             Updater.Invoke(this, MappedInput, Value);
         }
 
+        public string ToJson()
+        {
+            string json = $"{{";
+            json = $"{json},\"type\":\"{Name}\"";
+            json = $"{json},\"id\":{Id}\"";
+            // i generici sono castati come object ed espongono solo le proprietà
+            // e i metodi di object
+            //json = $"{json},\"value\":{sensor.GetValue().ToString("0.00")}\"";
+            json = $"{json},\"value\":{GetValue().ToString()}\"";
+            json = $"{json},\"timestamp\":{Strings.GetTimestamp(DateTime.Now) }\"";
+            json = $"{json}}}";
+
+            return json;
+        }
     }
 }
