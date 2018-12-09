@@ -7,7 +7,7 @@ in fase di configurazione riceve:
 espone
 	.On()				avvia il sensore
 	.Off()				arresta il sensore
-	.GetValue()			retistuisce il valore scalato
+	.GetValue()			restistuisce il valore scalato
 produce
 	->Changed()	evento rilasciato quando le regole applicate al valore lo impongono
 
@@ -18,7 +18,7 @@ privato
 	tmrPoll_trig()		in base al polling rate
 	tmrPush_trig()		in base alle regole
 	{
-		evthandler.chang()
+		evthandler.change()
 	}
 
 	GetValue()
