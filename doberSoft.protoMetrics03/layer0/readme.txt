@@ -3,12 +3,12 @@ non contiene logica ad esclusione di quello che serve per mappare le porte fisic
 
 IInput
 - digitalInput
-- analogInput(resolution)		max bits
+- analogInput					max bits
 - numericInput<Type>			int, float
 
 IOutput
 - digitalOuput
-- analogOutput(resolution)		max bits
+- analogOutput					max bits
 - numericOutput<Type>			int, float
 
 espone

@@ -20,7 +20,8 @@ namespace doberSoft.protoMetrics03.ScaleFunctions
 
         public decimal Scale(IInput<int>[] inputs)
         {
-            return (inputs[0].GetValue() - Parameters.MinIn) / (Parameters.MaxIn - Parameters.MinIn) * (Parameters.MaxOut - Parameters.MinOut) + Parameters.MinOut;
+            decimal k = (Parameters.MaxOut - Parameters.MinOut) / (Parameters.MaxIn - Parameters.MinIn);
+            return (inputs[0].GetValue() - Parameters.MinIn) * k  + Parameters.MinOut;
         }
     }
 }

@@ -4,25 +4,21 @@ namespace doberSoft.protoMetrics03.ScaleFunctions
 {
     class PositionScale : IScale<decimal, Position>
     {
-        public PositionScale():this(1)
+        public PositionScale() : this(100)
         {
 
         }
-        public PositionScale(int options)
+        public PositionScale(int scaleFactor)
         {
-            /* ****************
-             * options determina se i gradi vengono formattati in
-             * decimale,
-             * sessagesimale
-             * altro?
-             */
+            Parameters = new ScaleParameters();
+            Parameters.MaxOut = scaleFactor;
         }
 
         public IScaleParameters Parameters { get; private set; }
 
         public Position Scale(IInput<decimal>[] inputs)
         {
-            return new Position(inputs[0].GetValue(), inputs[1].GetValue());
+            return new Position(inputs[0].GetValue()/ Parameters.MaxOut, inputs[1].GetValue() / Parameters.MaxOut);
         }
 
     }

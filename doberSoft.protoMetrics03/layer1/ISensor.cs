@@ -14,11 +14,14 @@ namespace doberSoft.protoMetrics03.layer1
 
         int Id { get; }
         string Name { get; }
-        IRules Rules { get; }
+        IRules<Tin> Rules { get; }
         Tout GetValue();
         IScale<Tin, Tout> ScaleFunction { get; }
         string ToJson();
         void On();
         void Off();
+        Type GetInputType { get; }
+        Type GetOutputType { get; }
+        //void Update(); TODO: aggiornamento su trigger esterno
     }
 }

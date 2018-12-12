@@ -4,7 +4,7 @@ using System.Text;
 
 namespace doberSoft.protoMetrics03.layer0
 {
-    public interface IInput<T>
+    public interface IInput<T> 
     {
         T GetValue();
     }

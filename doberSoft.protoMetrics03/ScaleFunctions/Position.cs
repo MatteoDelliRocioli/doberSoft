@@ -1,6 +1,6 @@
 ﻿namespace doberSoft.protoMetrics03.ScaleFunctions
 {
-    class Position
+    public class Position
     {
         public Position()
         {
@@ -12,15 +12,5 @@
         }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-
-        public override string ToString()
-        {
-            return ToString("0.00");
-        }
-
-        public string ToString(string format)
-        {
-            return $"{{\"Lat\":\"{Latitude.ToString(format)}\",\"Lon\":\"{Longitude.ToString(format)}\"}}";
-        }
     }
 }
