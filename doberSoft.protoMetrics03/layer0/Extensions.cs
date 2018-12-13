@@ -20,5 +20,10 @@ namespace doberSoft.protoMetrics03.layer0
         {
             return new NumericInput(parent, i);
         }
+
+        public static IInput<string> GetStringInput(this LogicIO parent, int i)
+        {
+            return new StringInput(parent, i);
+        }
     }
 }

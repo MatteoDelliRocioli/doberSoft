@@ -196,8 +196,9 @@ namespace doberSoft.protoMetrics03.layer1
         protected virtual void tmrPush_trig(object source, ElapsedEventArgs e)
         {
             // valuta le rules
-            dynamic hHi = Rules.HysteresisHi;
-            dynamic hLo = Rules.HysteresisLo;
+
+            var hHi = Rules.HysteresisHi;
+            var hLo = Rules.HysteresisLo;
 
             for (int i = 0; i < _inputs.Count; i++)
             {

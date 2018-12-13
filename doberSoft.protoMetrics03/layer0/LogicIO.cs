@@ -9,6 +9,12 @@ namespace doberSoft.protoMetrics03.layer0
         bool[] _bool = new bool[8];
         int[] _analog = new int[8];
         decimal[] _decimal = new decimal[8];
+        string[] _string = new string[8];
+
+        internal string GetString(int i)
+        {
+            return _string[i];
+        }
 
 
         /// <summary>
