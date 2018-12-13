@@ -4,6 +4,12 @@ using System.Text;
 
 namespace doberSoft.protoMetrics03.layer1
 {
+    public class SensorEventArgs : EventArgs
+    {
+        public SensorEventArgs()
+        {
+        }
+    }
     public class SensorEventArgs<Tin, Tout> : EventArgs
     {
         public SensorEventArgs()

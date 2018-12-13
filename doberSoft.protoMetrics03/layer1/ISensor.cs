@@ -7,21 +7,26 @@ using System.Text;
 
 namespace doberSoft.protoMetrics03.layer1
 {
-    public interface ISensor<Tin, Tout>
+    public interface ISensor
     {
-
-        event EventHandler<SensorEventArgs<Tin, Tout>> ValueChanged;
+        event EventHandler<SensorEventArgs> ValueChanged;
 
         int Id { get; }
         string Name { get; }
-        IRules<Tin> Rules { get; }
-        Tout GetValue();
-        IScale<Tin, Tout> ScaleFunction { get; }
         string ToJson();
         void On();
         void Off();
-        Type GetInputType { get; }
-        Type GetOutputType { get; }
+    }
+    public interface ISensor<Tin, Tout>: ISensor
+    {
+
+        //event EventHandler<SensorEventArgs<Tin, Tout>> ValueChanged;
+
+        IRules<Tin> Rules { get; }
+        Tout GetValue();
+        IScale<Tin, Tout> ScaleFunction { get; }
+        //Type GetInputType { get; }
+        //Type GetOutputType { get; }
         //void Update(); TODO: aggiornamento su trigger esterno
     }
 }

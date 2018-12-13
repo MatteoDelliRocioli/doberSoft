@@ -4,6 +4,7 @@ using doberSoft.protoMetrics03.layer3;
 using doberSoft.protoMetrics03.Rules;
 using doberSoft.protoMetrics03.ScaleFunctions;
 using System;
+using System.Collections.Generic;
 using System.Timers;
 
 namespace doberSoft.protoMetrics03
@@ -69,33 +70,37 @@ namespace doberSoft.protoMetrics03
                 );
 
 
-
             //posSensor.ValueChanged += PositionSensor_ValueChanged;
             //tempSensor.ValueChanged += TemperatureSensor_ValueChanged;
             //busFieldSensor.ValueChanged += BusFieldSensor_ValueChanged;
             //bitSensor.ValueChanged += DigitalSensor_ValueChanged;
+            //posSensor.ValueChanged += Generic_ValueChanged;
+            //tempSensor.ValueChanged += Generic_ValueChanged;
+            //busFieldSensor.ValueChanged += Generic_ValueChanged;
+            //bitSensor.ValueChanged += Generic_ValueChanged;
 
+            //posSensor.On();
+            //tempSensor.On();
+            //busFieldSensor.On();
+            //bitSensor.On();
 
 
             // TODO: generare una classe Sensors che permetta di aggiungere e 
             // manipolare i sensori a prescindere dal tipo implementato
             // https://stackoverflow.com/questions/754341/adding-generic-object-to-generic-list-in-c-sharp
-            /*
+
+            List<ISensor> sensors = new List<ISensor>();
+            sensors.Add(bitSensor);
+            sensors.Add(tempSensor);
+            sensors.Add(busFieldSensor);
+            sensors.Add(bitSensor);
+
             foreach (var item in sensors)
             {
                 item.ValueChanged += Generic_ValueChanged;
                 item.On();
             }
-            */
-            posSensor.ValueChanged += Generic_ValueChanged;
-            tempSensor.ValueChanged += Generic_ValueChanged;
-            busFieldSensor.ValueChanged += Generic_ValueChanged;
-            bitSensor.ValueChanged += Generic_ValueChanged;
 
-            posSensor.On();
-            tempSensor.On();
-            busFieldSensor.On();
-            bitSensor.On();
 
 
             logicIO.On();
@@ -109,9 +114,12 @@ namespace doberSoft.protoMetrics03
         }
 
 
-        private static void Generic_ValueChanged<Tin, Tout>(object sender, SensorEventArgs<Tin, Tout> e)
+        //private static void Generic_ValueChanged<Tin, Tout>(object sender, SensorEventArgs<Tin, Tout> e)
+        //{
+        //    var sensor = (ISensor<Tin, Tout>)sender;
+        private static void Generic_ValueChanged(object sender, SensorEventArgs e)
         {
-            var sensor = (ISensor<Tin, Tout>)sender;
+            var sensor = (ISensor)sender;
 
             try
             {

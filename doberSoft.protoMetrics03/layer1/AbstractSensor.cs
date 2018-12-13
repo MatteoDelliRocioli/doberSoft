@@ -24,7 +24,8 @@ namespace doberSoft.protoMetrics03.layer1
         /// <summary>
         /// Evento generato dal sensore in base alle ScanRules impostate: in polling > allo scadere di ogni intervallo; in push > se la differenza il valore attuale e il valore precedente presente sugli ingressi eccede i limiti di isteresi impostati
         /// </summary>
-        public event EventHandler<SensorEventArgs<Tin, Tout>> ValueChanged;
+        //public event EventHandler<SensorEventArgs<Tin, Tout>> ValueChanged;
+        public event EventHandler<SensorEventArgs> ValueChanged;
         /// <summary>
         /// Restituisce un sensore generico che usa una funzione di scalatura per calcolare il valore gli input
         /// </summary>
@@ -56,20 +57,20 @@ namespace doberSoft.protoMetrics03.layer1
             Rules = rules;
         }
 
-        public Type GetInputType
-        {
-            get
-            {
-                return typeof(Tin);
-            }
-        }
-        public Type GetOutputType
-        {
-            get
-            {
-                return typeof(Tout);
-            }
-        }
+        //public Type GetInputType
+        //{
+        //    get
+        //    {
+        //        return typeof(Tin);
+        //    }
+        //}
+        //public Type GetOutputType
+        //{
+        //    get
+        //    {
+        //        return typeof(Tout);
+        //    }
+        //}
 
         public string Name { get; private set; }
         public int Id { get; private set; }
@@ -178,7 +179,8 @@ namespace doberSoft.protoMetrics03.layer1
         {
             //Console.WriteLine("    SetValue");
             _signalTime = e.SignalTime;
-            ValueChanged?.Invoke(this, new SensorEventArgs<Tin, Tout>());
+            //ValueChanged?.Invoke(this, new SensorEventArgs<Tin, Tout>());
+            ValueChanged?.Invoke(this, new SensorEventArgs());
         }
     }
 }
