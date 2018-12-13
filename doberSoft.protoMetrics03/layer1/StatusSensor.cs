@@ -8,18 +8,18 @@ using System.Timers;
 
 namespace doberSoft.protoMetrics03.layer1
 {
-    class DigitalSensor : AbstractSensor<bool, bool>
+    class StatusSensor : AbstractSensor<bool, bool>
     {
 
         /// <summary>
-        /// Restituiece un sensore digitale mappato su singolo input. Non usa scalatura. Non usa isteresi
+        /// Restituisce un sensore digitale mappato su singolo input. Non usa scalatura. Non usa isteresi
         /// </summary>
         /// <param name="name"></param>
         /// <param name="id"></param>
         /// <param name="ScanMode"></param>
         /// <param name="ScanInterval"></param>
         /// <param name="input"></param>
-        public DigitalSensor(
+        public StatusSensor(
             string name,
             int id,
             ScanModeConstants ScanMode,
@@ -31,8 +31,14 @@ namespace doberSoft.protoMetrics03.layer1
                     ScanInterval = ScanInterval
                 })
         {
+            Console.WriteLine($"Status_{Type}_created({Id})");
             InputAdd(input);
         }
+        /// <summary>
+        /// Scansiona l'ingresso con la frequenza impostata e invia i dati solo lo stato è diverso dal precedente
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         protected override void tmrPush_trig(object source, ElapsedEventArgs e)
         {
             //Console.WriteLine($"Digital_{Name} push({GetCurValue(0)}) != ({GetOldValue(0)})");

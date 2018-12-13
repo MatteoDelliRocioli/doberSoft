@@ -15,10 +15,10 @@ namespace doberSoft.protoMetrics03.layer1
     {
 
         /// <summary>
-        /// Restituiece un sensore generico mappato su singolo input
+        /// Restituiesce un sensore generico mappato su singolo input
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="id"></param>
+        /// <param name="name">Etichetta assegnata al sensore</param>
+        /// <param name="id">Identificativo del sensore</param>
         /// <param name="scaleFunction"></param>
         /// <param name="rules"></param>
         /// <param name="input"></param>
@@ -30,12 +30,11 @@ namespace doberSoft.protoMetrics03.layer1
             IInput<Tin> input)
                 : base(name, id, scaleFunction, rules)
         {
+            Console.WriteLine($"Generic1_{Type}_created({Id})");
             _inputs.Add(input);
-            //_inputs = new IInput<Tin>[1];
-            //_inputs[0] = input;
         }
         /// <summary>
-        /// restituisce un sensore generico mappato su 2 inputs, tipicamente un sensore di posizione che legge 2 campi dal bus. 
+        /// Restituisce un sensore generico mappato su 2 inputs, tipicamente un sensore di posizione che legge 2 campi dal bus. 
         /// Tin: decimal; 
         /// Tout: position
         /// </summary>
@@ -54,6 +53,7 @@ namespace doberSoft.protoMetrics03.layer1
             IInput<Tin> input2)
                 : base(name, id, scaleFunction, rules)
         {
+            Console.WriteLine($"Generic2_{Type}_created({Id})");
             InputAdd(input1);
             InputAdd(input2);
         }

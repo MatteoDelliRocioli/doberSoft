@@ -18,6 +18,7 @@ namespace doberSoft.protoMetrics03.layer1
             IInput<int> input)
                 : base(name, id, scaleFunction, rules)
         {
+            Console.WriteLine($"Temperature_{Type}_created({Id})");
             InputAdd(input);;
         }
 
@@ -28,10 +29,8 @@ namespace doberSoft.protoMetrics03.layer1
             int hLo = Rules.HysteresisLo;
 
             var result = GetCurValue(0) - GetOldValue(0);
-            //Console.WriteLine($"temperature_{Name} push({GetCurValue(0)}) - ({GetOldValue(0)}) = {hLo} > {result} > {hHi}");
             if (result > hHi || result < hLo)
             {
-                //Console.WriteLine("   fire");
                 BackUpInputs();
                 SetValue(e);
             }

@@ -19,6 +19,7 @@ namespace doberSoft.protoMetrics03.layer1
             IInput<decimal> input2)
                 : base(name, id, scaleFunction, rules)
         {
+            Console.WriteLine($"Position_{Type}_created({Id})");
             InputAdd(input1);
             InputAdd(input2);
         }
@@ -28,14 +29,11 @@ namespace doberSoft.protoMetrics03.layer1
             // valuta le rules
             decimal hHi = Rules.HysteresisHi;
             decimal hLo = Rules.HysteresisLo;
-
             for (int i = 0; i < InputCount; i++)
             {
-                //Console.WriteLine($"position_{Name} push({GetCurValue(i)}) - ({GetOldValue(i)}) = { GetCurValue(i) - GetOldValue(i)} > {hHi}, < {hLo}");
                 var result = GetCurValue(i) - GetOldValue(i);
                 if (result > hHi || result < hLo)
                 {
-                    //Console.WriteLine("   fire");
                     BackUpInputs();
                     SetValue(e);
                     break;

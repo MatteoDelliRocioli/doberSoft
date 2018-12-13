@@ -14,7 +14,6 @@ namespace doberSoft.protoMetrics03
         static void Main(string[] args)
         {
 
-            ICommDriver CommDriver = new HttpCommDriver();
             var logicIO = new LogicIO();
             logicIO.RndInit();
 
@@ -28,7 +27,8 @@ namespace doberSoft.protoMetrics03
                 {
                     ScanMode = ScanModeConstants.PushMode,
                     ScanInterval = 500,
-                    HysteresisHi = 5
+                    HysteresisHi = 0,
+                    HysteresisLo = 0
                 },
                 logicIO.GetNumericInput(0),
                 logicIO.GetNumericInput(1)
@@ -51,46 +51,27 @@ namespace doberSoft.protoMetrics03
 
             ISensor<decimal, decimal> busFieldSensor = new GenericSensor<decimal, decimal>(
                 "bus field 1",
-                12,
+                33,
                 new NumericScale(-32767, 32768, 0, 1000),
                 new ScanRules<decimal>
                 {
                     ScanMode = ScanModeConstants.PollMode,
-                    ScanInterval = 1000
+                    ScanInterval = 2000
                 },
                 logicIO.GetNumericInput(2)
                 );
 
-            ISensor<bool, bool> bitSensor = new DigitalSensor(
+            ISensor<bool, bool> bitSensor = new StatusSensor(
                 "digital 1",
-                25,
+                42,
                 ScanModeConstants.PushMode,
                 2000,
                 logicIO.GetDigitalInput(0)
                 );
 
 
-            //posSensor.ValueChanged += PositionSensor_ValueChanged;
-            //tempSensor.ValueChanged += TemperatureSensor_ValueChanged;
-            //busFieldSensor.ValueChanged += BusFieldSensor_ValueChanged;
-            //bitSensor.ValueChanged += DigitalSensor_ValueChanged;
-            //posSensor.ValueChanged += Generic_ValueChanged;
-            //tempSensor.ValueChanged += Generic_ValueChanged;
-            //busFieldSensor.ValueChanged += Generic_ValueChanged;
-            //bitSensor.ValueChanged += Generic_ValueChanged;
-
-            //posSensor.On();
-            //tempSensor.On();
-            //busFieldSensor.On();
-            //bitSensor.On();
-
-
-            // TODO: generare una classe Sensors che permetta di aggiungere e 
-            // manipolare i sensori a prescindere dal tipo implementato
-            // https://stackoverflow.com/questions/754341/adding-generic-object-to-generic-list-in-c-sharp
-
             List<ISensor> sensors = new List<ISensor>();
-            sensors.Add(bitSensor);
+            sensors.Add(posSensor);
             sensors.Add(tempSensor);
             sensors.Add(busFieldSensor);
             sensors.Add(bitSensor);
@@ -114,17 +95,14 @@ namespace doberSoft.protoMetrics03
         }
 
 
-        //private static void Generic_ValueChanged<Tin, Tout>(object sender, SensorEventArgs<Tin, Tout> e)
-        //{
-        //    var sensor = (ISensor<Tin, Tout>)sender;
         private static void Generic_ValueChanged(object sender, SensorEventArgs e)
         {
-            var sensor = (ISensor)sender;
-
             try
             {
+                var sensor = ((ISensor)sender);
                 var json = sensor.ToJson();
-                Console.WriteLine($"Generic_ValueChanged |{json}|");
+                Console.WriteLine($"cars/AG673WK/sensors/{ sensor.Type }/{ sensor.Id} > |{json}|");
+                //ICommDriver CommDriver = new HttpCommDriver();
                 //ICommDriver CommDriver = new MqttCommDriver();
                 //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
             }
@@ -134,74 +112,6 @@ namespace doberSoft.protoMetrics03
             }
 
         }
-
-        //private static void PositionSensor_ValueChanged(object sender, SensorEventArgs<decimal, Position> e)
-        //{
-        //    var sensor = (ISensor<decimal, Position>)sender;
-
-        //    try
-        //    {
-        //        var json = sensor.ToJson();
-        //        Console.WriteLine($"Position_ValueChanged |{json}|");
-        //        //ICommDriver CommDriver = new MqttCommDriver();
-        //        //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine("Errore nela generazione del json");
-        //    }
-        //}
-
-        //private static void TemperatureSensor_ValueChanged(object sender, SensorEventArgs<int, decimal> e)
-        //{
-        //    var sensor = (ISensor<int, decimal>)sender;
-
-        //    try
-        //    {
-        //        var json = sensor.ToJson();
-        //        Console.WriteLine($"Temperature_ValueChanged | {json} |");
-        //        //ICommDriver CommDriver = new MqttCommDriver();
-        //        //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine("Errore nela generazione del json");
-        //    }
-        //}
-
-        //private static void BusFieldSensor_ValueChanged(object sender, SensorEventArgs<decimal, decimal> e)
-        //{
-        //    var sensor = (ISensor<decimal, decimal>)sender;
-
-        //    try
-        //    {
-        //        var json = sensor.ToJson();
-        //        Console.WriteLine($"Bus_ValueChanged |{json}|");
-        //        //ICommDriver CommDriver = new MqttCommDriver();
-        //        //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine("Errore nela generazione del json");
-        //    };
-        //}
-
-        //private static void DigitalSensor_ValueChanged(object sender, SensorEventArgs<bool, bool> e)
-        //{
-        //    var sensor = (ISensor<bool, bool>)sender;
-
-        //    try
-        //    {
-        //        var json = sensor.ToJson();
-        //        Console.WriteLine($"Digital_ValueChanged |{json}|");
-        //        //ICommDriver CommDriver = new MqttCommDriver();
-        //        //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine("Errore nela generazione del json");
-        //    }
-        //}
 
         private static void testLogicIO(LogicIO logicIO)
         {
