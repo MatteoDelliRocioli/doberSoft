@@ -3,9 +3,14 @@ C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcore
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.protoMetrics03.runtimeconfig.dev.json
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.protoMetrics03.dll
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.protoMetrics03.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.Sensors.Core.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.Sensors.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.Sensors.Core.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\bin\Debug\netcoreapp2.1\doberSoft.Sensors.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.csprojAssemblyReference.cache
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.csproj.CoreCompileInputs.cache
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.AssemblyInfoInputs.cache
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.AssemblyInfo.cs
+C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.csproj.CopyComplete
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.dll
 C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.pdb
-C:\Users\andb7\source\repos\doberSoft\doberSoft.protoMetrics03\obj\Debug\netcoreapp2.1\doberSoft.protoMetrics03.csprojAssemblyReference.cache

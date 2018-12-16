@@ -9,7 +9,9 @@
       "doberSoft.protoMetrics03/1.0.0": {
         "dependencies": {
           "M2MqttDotnetCore": "1.0.8",
-          "Newtonsoft.Json": "12.0.1"
+          "Newtonsoft.Json": "12.0.1",
+          "doberSoft.Sensors": "1.0.0",
+          "doberSoft.Sensors.Core": "1.0.0"
         },
         "runtime": {
           "doberSoft.protoMetrics03.dll": {}
@@ -620,6 +622,22 @@
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0"
         }
+      },
+      "doberSoft.Sensors/1.0.0": {
+        "dependencies": {
+          "doberSoft.Sensors.Core": "1.0.0"
+        },
+        "runtime": {
+          "doberSoft.Sensors.dll": {}
+        }
+      },
+      "doberSoft.Sensors.Core/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "runtime": {
+          "doberSoft.Sensors.Core.dll": {}
+        }
       }
     }
   },
@@ -1027,6 +1045,16 @@
       "sha512": "sha512-k/+g4b7vjdd4aix83sTgC9VG6oXYKAktSfNIJUNGxPEj7ryEOfzHHhfnmsZvjxawwcD9HyWXKCXmPjX8U4zeSw==",
       "path": "system.threading.threadpool/4.3.0",
       "hashPath": "system.threading.threadpool.4.3.0.nupkg.sha512"
+    },
+    "doberSoft.Sensors/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "doberSoft.Sensors.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

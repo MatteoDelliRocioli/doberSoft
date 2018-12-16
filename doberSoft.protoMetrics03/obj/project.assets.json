@@ -1117,6 +1117,32 @@
         "runtime": {
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
+      },
+      "doberSoft.Sensors/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "doberSoft.Sensors.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/doberSoft.Sensors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/doberSoft.Sensors.dll": {}
+        }
+      },
+      "doberSoft.Sensors.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "bin/placeholder/doberSoft.Sensors.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/doberSoft.Sensors.Core.dll": {}
+        }
       }
     }
   },
@@ -3917,13 +3943,25 @@
         "system.threading.threadpool.4.3.0.nupkg.sha512",
         "system.threading.threadpool.nuspec"
       ]
+    },
+    "doberSoft.Sensors/1.0.0": {
+      "type": "project",
+      "path": "../doberSoft.Sensors/doberSoft.Sensors.csproj",
+      "msbuildProject": "../doberSoft.Sensors/doberSoft.Sensors.csproj"
+    },
+    "doberSoft.Sensors.Core/1.0.0": {
+      "type": "project",
+      "path": "../doberSoft.Sensors.Core/doberSoft.Sensors.Core.csproj",
+      "msbuildProject": "../doberSoft.Sensors.Core/doberSoft.Sensors.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "M2MqttDotnetCore >= 1.0.8",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Newtonsoft.Json >= 12.0.1"
+      "Newtonsoft.Json >= 12.0.1",
+      "doberSoft.Sensors >= 1.0.0",
+      "doberSoft.Sensors.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3955,7 +3993,14 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors.Core\\doberSoft.Sensors.Core.csproj": {
+              "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors.Core\\doberSoft.Sensors.Core.csproj"
+            },
+            "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors\\doberSoft.Sensors.csproj": {
+              "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors\\doberSoft.Sensors.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

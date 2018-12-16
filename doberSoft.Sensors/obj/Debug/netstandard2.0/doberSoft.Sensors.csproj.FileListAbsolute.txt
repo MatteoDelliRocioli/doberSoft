@@ -1,0 +1,12 @@
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.csprojAssemblyReference.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.csproj.CoreCompileInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.AssemblyInfoInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.AssemblyInfo.cs
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\bin\Debug\netstandard2.0\doberSoft.Sensors.deps.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\bin\Debug\netstandard2.0\doberSoft.Sensors.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\bin\Debug\netstandard2.0\doberSoft.Sensors.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\bin\Debug\netstandard2.0\doberSoft.Sensors.Core.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\bin\Debug\netstandard2.0\doberSoft.Sensors.Core.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.csproj.CopyComplete
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Sensors\obj\Debug\netstandard2.0\doberSoft.Sensors.pdb
