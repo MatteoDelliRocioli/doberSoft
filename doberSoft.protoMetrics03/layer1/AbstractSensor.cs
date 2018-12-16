@@ -16,15 +16,34 @@ namespace doberSoft.protoMetrics03.layer1
     public abstract class AbstractSensor<Tin, Tout> : ISensor<Tin, Tout>
     {
         private Timer timer;
-        protected List<IInput<Tin>> _inputs = new List<IInput<Tin>>();
-        private Tin[] _oldInputValues;
         private DateTime _signalTime;
+        private Tin[] _oldInputValues;
+        protected List<IInput<Tin>> _inputsList = new List<IInput<Tin>>();
 
+        public AbstractSensor()
+        {
+        }
 
         /// <summary>
         /// Evento generato dal sensore in base alle ScanRules impostate: in polling > allo scadere di ogni intervallo; in push > se la differenza tra il valore attuale e il valore precedente presente sugli ingressi eccede i limiti di isteresi impostati
         /// </summary>
         public event EventHandler<SensorEventArgs> ValueChanged;
+
+        /// <summary>
+        /// Restituisce un sensore generico senza ulteriori attributi
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="id"></param>
+        /// <param name="scaleFunction"></param>
+        /// <param name="rules"></param>
+        protected AbstractSensor(
+            string name,
+            int id) 
+        {
+            Id = id;
+            Name = name;
+        }
+
         /// <summary>
         /// Restituisce un sensore generico che usa una funzione di scalatura per calcolare il valore gli input
         /// </summary>
@@ -50,31 +69,46 @@ namespace doberSoft.protoMetrics03.layer1
         protected AbstractSensor(
             string name,
             int id,
-            IRules<Tin> rules)
+            IRules<Tin> rules) : this(name, id)
         {
-            Id = id;
-            Name = name;
             Rules = rules;
         }
 
         public string Name { get; private set; }
         public int Id { get; private set; }
+        public void SetRules(IRules rules)
+        {
+            Rules = (IRules<Tin>)rules;
+        }
         /// <summary>
         /// Regole utilizzate dal sensore per osservare gli ingressi mappati e generare l'evento ValueChange
         /// </summary>
         public IRules<Tin> Rules { get; private set; }
+        public void SetScale(IScale scale)
+        {
+            ScaleFunction = (IScale<Tin, Tout>)scale;
+        }
         /// <summary>
         /// Funzione di scalatura utilizzata per calcolare il valore della grandezza associata al valore dell'input
         /// </summary>
-        public IScale<Tin, Tout> ScaleFunction { get; private set; }
+        public IScale<Tin, Tout> ScaleFunction { get; set; }
+        //public IScale ScaleFunction { get; set; }
+        //private IScale<Tin, Tout> ScaleFunctionTyped
+        //{
+        //    get
+        //    {
+        //        return (IScale<Tin, Tout>)ScaleFunction;
+        //    }
+        //}
+
+            
         /// <summary>
         /// Valore della grandezza scalata
         /// </summary>
         /// <returns>int, decimal, Position, ...</returns>
         public virtual Tout GetValue()
         {
-            var a = _inputs;
-            return ScaleFunction.Scale(_inputs.ToArray());
+            return ScaleFunction.Scale(_inputsList.ToArray());
         }
         /// <summary>
         /// Numero di ingressi mappati
@@ -83,7 +117,7 @@ namespace doberSoft.protoMetrics03.layer1
         {
             get
             {
-                return _inputs.Count;
+                return _inputsList.Count;
             }
         }
 
@@ -94,14 +128,23 @@ namespace doberSoft.protoMetrics03.layer1
             }
         }
 
+
+
         /// <summary>
         /// Aggiunge un ingresso alla mappatura
         /// </summary>
         /// <param name="input">bool, int, digital</param>
         protected void InputAdd(IInput<Tin> input)
         {
-            _inputs.Add(input);
+            _inputsList.Add(input);
         }
+
+
+        public void InputAdd<T>(T input)
+        {
+            _inputsList.Add((IInput<Tin>)input);
+        }
+
         /// <summary>
         /// Valore attuale presente sugli ingressi
         /// </summary>
@@ -109,7 +152,7 @@ namespace doberSoft.protoMetrics03.layer1
         /// <returns></returns>
         protected virtual Tin GetCurValue(int i)
         {
-            return _inputs[i].GetValue();
+            return _inputsList[i].GetValue();
         }
         /// <summary>
         /// Valore precedente presente sugli ingressi
@@ -120,6 +163,8 @@ namespace doberSoft.protoMetrics03.layer1
         {
             return _oldInputValues[i];
         }
+
+
         /// <summary>
         /// Arresta il ciclo di osservazione degli ingressi
         /// </summary>
@@ -137,7 +182,7 @@ namespace doberSoft.protoMetrics03.layer1
         {
             // inizializziamo il loop di osservazione dell'input
             timer = new Timer(Rules.ScanInterval);
-            _oldInputValues = new Tin[_inputs.Count];
+            _oldInputValues = new Tin[_inputsList.Count];
             BackUpInputs();
 
             if (Rules.ScanMode == ScanModeConstants.PushMode)
@@ -153,6 +198,8 @@ namespace doberSoft.protoMetrics03.layer1
             timer.AutoReset = true;
             timer.Start();
         }
+
+
         /// <summary>
         /// Restituisce il pacchetto (data) contenente il nome, il tipo e l'id del sensore, l'ultimo valore, il timestamp della lettura
         /// </summary>
@@ -169,16 +216,20 @@ namespace doberSoft.protoMetrics03.layer1
             };
             return JsonConvert.SerializeObject(data);
         }
+
+
         /// <summary>
         /// Salva i valori presenti sugli input
         /// </summary>
         protected void BackUpInputs()
         {
-            for (int i = 0; i < _inputs.Count; i++)
+            for (int i = 0; i < _inputsList.Count; i++)
             {
-                _oldInputValues[i] = _inputs[i].GetValue();
+                _oldInputValues[i] = _inputsList[i].GetValue();
             }
         }
+
+
         /// <summary>
         /// Scansiona gli ingressi con la frequenza impostata e invia i dati in polling
         /// </summary>
@@ -188,6 +239,8 @@ namespace doberSoft.protoMetrics03.layer1
         {
             SetValue(e);
         }
+
+
         /// <summary>
         /// Scansiona gli ingressi con la frequenza impostata e invia i dati solo se superano le isteresi impostate
         /// </summary>
@@ -196,23 +249,20 @@ namespace doberSoft.protoMetrics03.layer1
         protected virtual void tmrPush_trig(object source, ElapsedEventArgs e)
         {
             // valuta le rules
-
-            var hHi = Rules.HysteresisHi;
-            var hLo = Rules.HysteresisLo;
-
-            for (int i = 0; i < _inputs.Count; i++)
+            for (int i = 0; i < _inputsList.Count; i++)
             {
-                var result = (dynamic)_inputs[i].GetValue() - (dynamic)_oldInputValues[i];
-                if (result > hHi || result < hLo)
+                if (Extension.CheckHysteresis(GetCurValue(i), GetOldValue(i), Rules.HysteresisHi, Rules.HysteresisLo))
                 {
-                    // appena c'è la condizione avviamo interrompiamo la vaerifica
+                    // appena c'è la condizione interrompiamo la verifica
                     // e inviamo i dati
                     BackUpInputs();
                     SetValue(e);
                     break;
                 }
             }
-        }
+        }    
+
+
         /// <summary>
         /// Invia i dati al consumer
         /// </summary>

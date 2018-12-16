@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.protoMetrics02", "doberSoft.protoMetrics02.csproj", "{FD7EE294-DC54-4A74-B540-7546B04B5336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doberSoft.protoMetrics03", "..\doberSoft.protoMetrics03\doberSoft.protoMetrics03.csproj", "{24D454C1-EF06-4FED-85FC-C1091354278D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.protoMetrics03", "..\doberSoft.protoMetrics03\doberSoft.protoMetrics03.csproj", "{24D454C1-EF06-4FED-85FC-C1091354278D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doberSoft.doberUtil", "..\doberUtil\doberSoft.doberUtil.csproj", "{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{24D454C1-EF06-4FED-85FC-C1091354278D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D454C1-EF06-4FED-85FC-C1091354278D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D454C1-EF06-4FED-85FC-C1091354278D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

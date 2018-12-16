@@ -13,6 +13,14 @@ namespace doberSoft.protoMetrics03.layer1
     /// <typeparam name="Tout"></typeparam>
     public class GenericSensor<Tin, Tout> : AbstractSensor<Tin, Tout> 
     {
+        public GenericSensor(
+            string name,
+            int id)
+                : base(name, id)
+        {
+            Console.WriteLine($"GenericNoDetails_{Type}_created({Id})");
+        }
+
 
         /// <summary>
         /// Restituiesce un sensore generico mappato su singolo input
@@ -31,7 +39,7 @@ namespace doberSoft.protoMetrics03.layer1
                 : base(name, id, scaleFunction, rules)
         {
             Console.WriteLine($"Generic1_{Type}_created({Id})");
-            _inputs.Add(input);
+            _inputsList.Add(input);
         }
         /// <summary>
         /// Restituisce un sensore generico mappato su 2 inputs, tipicamente un sensore di posizione che legge 2 campi dal bus. 
@@ -56,6 +64,22 @@ namespace doberSoft.protoMetrics03.layer1
             Console.WriteLine($"Generic2_{Type}_created({Id})");
             InputAdd(input1);
             InputAdd(input2);
+        }
+
+        protected override void tmrPush_trig(object source, ElapsedEventArgs e)
+        {
+            // valuta le rules
+            for (int i = 0; i < _inputsList.Count; i++)
+            {
+                if (Extension.CheckHysteresis(GetCurValue(i), GetOldValue(i), Rules.HysteresisHi, Rules.HysteresisLo))
+                {
+                    // appena c'è la condizione interrompiamo la verifica
+                    // e inviamo i dati
+                    BackUpInputs();
+                    SetValue(e);
+                    break;
+                }
+            }
         }
     }
 

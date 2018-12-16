@@ -18,65 +18,105 @@ namespace doberSoft.protoMetrics03
             logicIO.RndInit();
 
 
-            ISensor<decimal, Position> posSensor = new PositionSensor(
-            //ISensor<decimal, Position> posSensor = new GenericSensor<decimal, Position>(
-                "position",
-                12,
-                new PositionScale(),
-                new ScanRules<decimal>
-                {
-                    ScanMode = ScanModeConstants.PushMode,
-                    ScanInterval = 500,
-                    HysteresisHi = 0,
-                    HysteresisLo = 0
-                },
-                logicIO.GetNumericInput(0),
-                logicIO.GetNumericInput(1)
-                );
-
-            ISensor<int, decimal> tempSensor = new TemperatureSensor(
-                "temperature 1",
-                25,
-                new LinearScale(0, 1024, -200, 600),
-                new ScanRules<int>
-                {
-                    ScanMode = ScanModeConstants.PushMode,
-                    ScanInterval = 1000,
-                    HysteresisHi = 5,
-                    HysteresisLo = -5,
-                },
-                logicIO.GetAnalogInput(0)
-                );
+            //ISensor<decimal, Position> posSensor = new PositionSensor(
+            ////ISensor<decimal, Position> posSensor = new GenericSensor<decimal, Position>(
+            //    "position",
+            //    12,
+            //    new PositionScale(),
+            //    new ScanRules<decimal>
+            //    {
+            //        ScanMode = ScanModeConstants.PushMode,
+            //        ScanInterval = 500,
+            //        HysteresisHi = 0,
+            //        HysteresisLo = 0
+            //    },
+            //    logicIO.GetNumericInput(0),
+            //    logicIO.GetNumericInput(1)
+            //    );
 
 
-            ISensor<decimal, decimal> busFieldSensor = new GenericSensor<decimal, decimal>(
-                "bus field 1",
-                33,
-                new NumericScale(-32767, 32768, 0, 1000),
-                new ScanRules<decimal>
-                {
-                    ScanMode = ScanModeConstants.PollMode,
-                    ScanInterval = 2000
-                },
-                logicIO.GetNumericInput(2)
-                );
-
-            ISensor<bool, bool> bitSensor = new StatusSensor(
-                "digital 1",
-                42,
-                ScanModeConstants.PushMode,
-                2000,
-                logicIO.GetDigitalInput(0)
-                );
+            //ISensor<int, decimal> tempSensor = new TemperatureSensor(
+            //    "temperature 1",
+            //    25,
+            //    new LinearScale(0, 1024, -200, 600),
+            //    new ScanRules<int>
+            //    {
+            //        ScanMode = ScanModeConstants.PushMode,
+            //        ScanInterval = 1000,
+            //        HysteresisHi = 5,
+            //        HysteresisLo = -5,
+            //    },
+            //    logicIO.GetAnalogInput(0)
+            //    );
 
 
-            List<ISensor> sensors = new List<ISensor>();
-            sensors.Add(posSensor);
-            sensors.Add(tempSensor);
-            sensors.Add(busFieldSensor);
-            sensors.Add(bitSensor);
+            //ISensor<decimal, decimal> busFieldSensor = new GenericSensor<decimal, decimal>(
+            //    "bus field 1",
+            //    33,
+            //    new NumericScale(-32767, 32768, 0, 1000),
+            //    new ScanRules<decimal>
+            //    {
+            //        ScanMode = ScanModeConstants.PollMode,
+            //        ScanInterval = 2000
+            //    },
+            //    logicIO.GetNumericInput(2)
+            //    );
 
-            foreach (var item in sensors)
+            //ISensor<bool, bool> bitSensor = new StatusSensor(
+            //    "digital 1",
+            //    42,
+            //    ScanModeConstants.PushMode,
+            //    2000,
+            //    logicIO.GetDigitalInput(0)
+            //    );
+            //ISensor analogSensor = new AnalogSensor("pressure 1", 56, 10, 0, 4000, ScanModeConstants.PushMode, 2000, logicIO.GetAnalogInput(3));
+
+            //List<ISensor> sensors = new List<ISensor>();
+            //sensors.Add(posSensor);
+            //sensors.Add(tempSensor);
+            //sensors.Add(busFieldSensor);
+            //sensors.Add(bitSensor);
+            //sensors.Add(analogSensor);
+
+            var sl = new SensorsList();
+
+            var s1 = sl.CreateSensorOfType<TemperatureSensor>("nuovo sTemp", 102)
+                            .WithRules(ScanModeConstants.PushMode,1000,-1,1)
+                            .WithScaleFunction(new LinearScale(0, 1024, -200, 600))
+                            .InputAdd(logicIO.GetAnalogInput(6))
+                            .InputAdd(logicIO.GetAnalogInput(7))
+                            .Build();
+
+
+
+            var s2 = sl.CreateSensorOfType<StatusSensor>("nuovo sStatus", 103)
+                            .WithRules<bool>(ScanModeConstants.PushMode,1000)
+                            .InputAdd(logicIO.GetDigitalInput(5))
+                            .Build();
+
+            var s3 = sl.CreateSensorFordata<Position>("nuovo sPos", 104)
+                            .WithRules<decimal>(ScanModeConstants.PushMode, 1000, -1, 1)
+                            .WithScaleFunction(new PositionScale(0.01M))
+                            .InputAdd(logicIO.GetNumericInput(6))
+                            .InputAdd(logicIO.GetNumericInput(7))
+                            .Build();
+
+            var s4 = sl.CreateSensorFordata<int>("nuovo sAnalog", 105)
+                            .WithRules<int>(ScanModeConstants.PushMode, 1000, -1, 1)
+                            .WithScaleFunction(new LinearScale(0, 1024, 0, 4000))
+                            .InputAdd(logicIO.GetAnalogInput(5))
+                            .Build();
+
+            var s5= sl.CreateSensorFordata<decimal>("nuovo sAnalog", 105)
+                            .WithRules<decimal>(ScanModeConstants.PushMode, 1000, -1, 1)
+                            .WithScaleFunction(new NumericScale(0, 1024, 0, 4000))
+                            .InputAdd(logicIO.GetNumericInput(5))
+                            .Build();
+
+
+
+
+            foreach (var item in sl)
             {
                 item.ValueChanged += Generic_ValueChanged;
                 item.On();

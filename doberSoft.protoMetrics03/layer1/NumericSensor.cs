@@ -8,29 +8,16 @@ using System.Timers;
 
 namespace doberSoft.protoMetrics03.layer1
 {
-    class TemperatureSensor: AbstractSensor<int, decimal>
+    class NumericSensor: AbstractSensor<decimal, decimal>
     {
-        public TemperatureSensor()        {
-
-        }
-        public TemperatureSensor(
+        public NumericSensor(
             string name,
             int id)
                 : base(name, id)
         {
-            Console.WriteLine($"TemperatureNoDetails_{Type}_created({Id})");
+            Console.WriteLine($"AnalogNoDetails_{Type}_created({Id})");
         }
-        public TemperatureSensor(
-            string name,
-            int id,
-            IScale<int, decimal> scaleFunction,
-            IRules<int> rules,
-            IInput<int> input)
-                : base(name, id, scaleFunction, rules)
-        {
-            Console.WriteLine($"Temperature_{Type}_created({Id})");
-            InputAdd(input);;
-        }
+
 
         protected override void tmrPush_trig(object source, ElapsedEventArgs e)
         {

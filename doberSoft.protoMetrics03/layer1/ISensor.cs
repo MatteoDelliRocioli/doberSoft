@@ -32,6 +32,9 @@ namespace doberSoft.protoMetrics03.layer1
         string ToJson();
         void On();
         void Off();
+        void SetScale(IScale scale);
+        void SetRules(IRules rules);
+        void InputAdd<T>(T input); 
     }
     /// <summary>
     /// Interfaccia parametrica che espone proprietà e metodi specifici per ogni tipo di sensore
