@@ -1,5 +1,4 @@
-﻿using doberSoft.protoMetrics03.layer0;
-using System;
+﻿using doberSoft.protoMetrics03.layer1;
 
 namespace doberSoft.protoMetrics03.ScaleFunctions
 {

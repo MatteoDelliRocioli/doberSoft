@@ -11,6 +11,7 @@ namespace doberSoft.protoMetrics03.layer1
 
         static SensorFactory()
         {
+            registeredTypes.Add(typeof(NumericSensor), typeof(NumericSensor));
             registeredTypes.Add(typeof(TemperatureSensor), typeof(TemperatureSensor));
             registeredTypes.Add(typeof(StatusSensor), typeof(StatusSensor));
             registeredTypes.Add(typeof(AnalogSensor), typeof(AnalogSensor));

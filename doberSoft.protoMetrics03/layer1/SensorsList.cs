@@ -1,12 +1,11 @@
-﻿using doberSoft.protoMetrics03.layer0;
-using doberSoft.protoMetrics03.Rules;
+﻿using doberSoft.protoMetrics03.Rules;
 using doberSoft.protoMetrics03.ScaleFunctions;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+
 // https://stackoverflow.com/questions/39386586/c-sharp-generic-interface-and-factory-pattern
 // https://codereview.stackexchange.com/questions/8307/implementing-factory-design-pattern-with-generics
+
 namespace doberSoft.protoMetrics03.layer1
 {
     interface ISensorBuilder

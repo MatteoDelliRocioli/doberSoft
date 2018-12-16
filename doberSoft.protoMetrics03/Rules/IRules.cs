@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace doberSoft.protoMetrics03.Rules
 {
     public interface IRules

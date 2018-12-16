@@ -80,7 +80,7 @@ namespace doberSoft.protoMetrics03
 
             var sl = new SensorsList();
 
-            var s1 = sl.CreateSensorOfType<TemperatureSensor>("nuovo sTemp", 102)
+            var s1 = sl.CreateSensorOfType<TemperatureSensor>("nuovo sTemp", 101)
                             .WithRules(ScanModeConstants.PushMode,1000,-1,1)
                             .WithScaleFunction(new LinearScale(0, 1024, -200, 600))
                             .InputAdd(logicIO.GetAnalogInput(6))
@@ -89,28 +89,33 @@ namespace doberSoft.protoMetrics03
 
 
 
-            var s2 = sl.CreateSensorOfType<StatusSensor>("nuovo sStatus", 103)
+            var s2 = sl.CreateSensorOfType<StatusSensor>("nuovo sStatus", 102)
                             .WithRules<bool>(ScanModeConstants.PushMode,1000)
                             .InputAdd(logicIO.GetDigitalInput(5))
                             .Build();
 
-            var s3 = sl.CreateSensorFordata<Position>("nuovo sPos", 104)
+            var s3 = sl.CreateSensorFordata<Position>("nuovo sPos", 103)
                             .WithRules<decimal>(ScanModeConstants.PushMode, 1000, -1, 1)
                             .WithScaleFunction(new PositionScale(0.01M))
                             .InputAdd(logicIO.GetNumericInput(6))
                             .InputAdd(logicIO.GetNumericInput(7))
                             .Build();
 
-            var s4 = sl.CreateSensorFordata<int>("nuovo sAnalog", 105)
+            var s4 = sl.CreateSensorFordata<int>("nuovo sAnalog", 104)
                             .WithRules<int>(ScanModeConstants.PushMode, 1000, -1, 1)
                             .WithScaleFunction(new LinearScale(0, 1024, 0, 4000))
                             .InputAdd(logicIO.GetAnalogInput(5))
                             .Build();
 
-            var s5= sl.CreateSensorFordata<decimal>("nuovo sAnalog", 105)
+            var s5 = sl.CreateSensorFordata<decimal>("nuovo sAnalog", 105)
                             .WithRules<decimal>(ScanModeConstants.PushMode, 1000, -1, 1)
                             .WithScaleFunction(new NumericScale(0, 1024, 0, 4000))
                             .InputAdd(logicIO.GetNumericInput(5))
+                            .Build();
+
+            var s6 = sl.CreateSensorFordata<bool>("nuovo sStatus", 106)
+                            .WithRules<bool>(ScanModeConstants.PushMode, 1000)
+                            .InputAdd(logicIO.GetDigitalInput(5))
                             .Build();
 
 

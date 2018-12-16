@@ -1,9 +1,7 @@
-﻿using doberSoft.protoMetrics03.layer0;
-using doberSoft.protoMetrics03.ScaleFunctions;
+﻿using doberSoft.protoMetrics03.ScaleFunctions;
 using doberSoft.protoMetrics03.Rules;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace doberSoft.protoMetrics03.layer1
 {

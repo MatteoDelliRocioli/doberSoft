@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using doberSoft.protoMetrics03.layer1;
 
 namespace doberSoft.protoMetrics03.layer0
 {
