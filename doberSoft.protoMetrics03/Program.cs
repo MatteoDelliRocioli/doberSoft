@@ -25,8 +25,6 @@ namespace doberSoft.protoMetrics03
                             .InputAdd(logicIO.GetAnalogInput(7))
                             .Build();
 
-
-
             sl.CreateSensorOfType<StatusSensor>("nuovo sStatus", 102)
                             .WithRules<bool>(ScanModeConstants.PushMode,1000)
                             .InputAdd(logicIO.GetDigitalInput(5))
@@ -56,9 +54,7 @@ namespace doberSoft.protoMetrics03
                             .InputAdd(logicIO.GetDigitalInput(5))
                             .Build();
 
-
-
-
+            
             foreach (var item in sl)
             {
                 item.ValueChanged += Generic_ValueChanged;
@@ -66,10 +62,8 @@ namespace doberSoft.protoMetrics03
             }
 
 
-
             logicIO.On();
-
-
+            
             Console.ReadKey();
         }
 
@@ -87,7 +81,7 @@ namespace doberSoft.protoMetrics03
             }
             catch
             {
-                Console.WriteLine("Errore nela generazione del json");
+                Console.WriteLine("Errore nella generazione del json");
             }
 
         }
