@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.protoMetrics02", "protoMetrics02\doberSoft.protoMetrics02.csproj", "{FD7EE294-DC54-4A74-B540-7546B04B5336}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.protoMetrics03", "doberSoft.protoMetrics03\doberSoft.protoMetrics03.csproj", "{24D454C1-EF06-4FED-85FC-C1091354278D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.doberUtil", "doberUtil\doberSoft.doberUtil.csproj", "{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Sensors.Core", "doberSoft.Sensors.Core\doberSoft.Sensors.Core.csproj", "{2AF9317F-C401-4A9F-A77D-D397D4AE89C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Sensors", "doberSoft.Sensors\doberSoft.Sensors.csproj", "{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Buffer", "doberSoft.Buffer\doberSoft.Buffer.csproj", "{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD7EE294-DC54-4A74-B540-7546B04B5336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7EE294-DC54-4A74-B540-7546B04B5336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7EE294-DC54-4A74-B540-7546B04B5336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7EE294-DC54-4A74-B540-7546B04B5336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D454C1-EF06-4FED-85FC-C1091354278D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D454C1-EF06-4FED-85FC-C1091354278D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D454C1-EF06-4FED-85FC-C1091354278D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D454C1-EF06-4FED-85FC-C1091354278D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE3E19A-FF99-4BAC-8A33-37D1DD9ED557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF9317F-C401-4A9F-A77D-D397D4AE89C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF9317F-C401-4A9F-A77D-D397D4AE89C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF9317F-C401-4A9F-A77D-D397D4AE89C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF9317F-C401-4A9F-A77D-D397D4AE89C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BEC658F-DDD9-486B-90A2-0DE83D8473AD}
+	EndGlobalSection
+EndGlobal

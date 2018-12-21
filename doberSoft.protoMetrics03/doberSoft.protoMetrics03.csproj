@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="M2MqttDotnetCore" Version="1.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\doberSoft.Sensors.Core\doberSoft.Sensors.Core.csproj" />
+    <ProjectReference Include="..\doberSoft.Sensors\doberSoft.Sensors.csproj" />
+    <ProjectReference Include="..\doberUtil\doberSoft.doberUtil.csproj" />
+  </ItemGroup>
+
+</Project>

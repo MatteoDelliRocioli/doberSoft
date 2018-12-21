@@ -237,12 +237,12 @@ namespace doberSoft.protoMetrics02
             // update the sensors
             Actions.CycleTask(2000, () =>
             {
-                //Console.WriteLine("\nCycle ");
-                termperature1sensor.Update();
-                termperature2sensor.Update();
-                pressureSensor.Update();
-                positionSensor.Update();
-                statusSensor.Update();
+                ////Console.WriteLine("\nCycle ");
+                //termperature1sensor.Update();
+                //termperature2sensor.Update();
+                //pressureSensor.Update();
+                //positionSensor.Update();
+                //statusSensor.Update();
 
             });
 

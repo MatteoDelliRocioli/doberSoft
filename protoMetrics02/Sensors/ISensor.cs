@@ -10,6 +10,7 @@ namespace doberSoft.protoMetrics02.Sensors
         string Name { get; }
         Tout GetValue();
         IScale<Tin, Tout> ScaleFunction { get; }
-        void Update();
+        //void Update();
+        string ToJson();
     }
 }
