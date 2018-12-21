@@ -6,10 +6,10 @@ namespace doberSoft.Buffer
 {
     public interface IDataBuffer
     {
-        void Push(IBufferData data, int priority);
-        IBufferData[] Get(out int key, int MaxCount = -1);
-        void Confirm(int key);
-        void Cancel(int key);
+        void Push(IBufferData data);
+        IBufferData[] Get(out int id, int MaxCount = -1);
+        void Confirm(int id);
+        void Cancel(int id);
         bool NotEmpty { get; }
         bool Empty { get; }
         int Length { get; }

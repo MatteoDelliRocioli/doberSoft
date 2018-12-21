@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\doberSoft.Sensors.Core\doberSoft.Sensors.Core.csproj" />
     <ProjectReference Include="..\doberSoft.Sensors\doberSoft.Sensors.csproj" />
+    <ProjectReference Include="..\doberUtil\doberSoft.doberUtil.csproj" />
   </ItemGroup>
 
 </Project>

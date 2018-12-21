@@ -8,18 +8,21 @@ namespace doberSoft.Sensors
     public static class SensorFactory
     {
         private static Dictionary<Type, Type> registeredTypes = new Dictionary<System.Type, System.Type>();
-
+        public static void Register<TKey, TValue>()
+        {
+            registeredTypes.Add(typeof(TKey), typeof(TValue));
+        }
         static SensorFactory()
         {
-            registeredTypes.Add(typeof(NumericSensor), typeof(NumericSensor));
-            registeredTypes.Add(typeof(TemperatureSensor), typeof(TemperatureSensor));
-            registeredTypes.Add(typeof(StatusSensor), typeof(StatusSensor));
-            registeredTypes.Add(typeof(AnalogSensor), typeof(AnalogSensor));
-            registeredTypes.Add(typeof(PositionSensor), typeof(PositionSensor));
-            registeredTypes.Add(typeof(Position), typeof(PositionSensor));
-            registeredTypes.Add(typeof(bool), typeof(StatusSensor));
-            registeredTypes.Add(typeof(int), typeof(AnalogSensor));
-            registeredTypes.Add(typeof(decimal), typeof(NumericSensor));
+            Register<NumericSensor,NumericSensor>();
+            Register<TemperatureSensor, TemperatureSensor>();
+            Register<StatusSensor, StatusSensor>();
+            Register<AnalogSensor, AnalogSensor>();
+            Register<PositionSensor, PositionSensor>();
+            Register<Position, PositionSensor>();
+            Register<bool, StatusSensor>();
+            Register<int, AnalogSensor>();
+            Register<decimal, NumericSensor>();
         }
 
         public static ISensor CreateGeneric<T>(string name, int id)

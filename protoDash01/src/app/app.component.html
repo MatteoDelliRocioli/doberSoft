@@ -1,5 +1,18 @@
-<button onclick="client.connect(options);">1. Connect</button>
-<button onclick="client.subscribe('testtopic/#', {qos: 2}); alert('Subscribed');">2. Subscribe</button>
-<button onclick="publish('Hello Foo !','testtopic/bar',2);">3. Publish</button>
-<button onclick="client.disconnect();">(4. Disconnect)</button>
-<div id="messages"></div>
+<button mat-raised-button (click)="subscribe()">SUBSCRIBE TO FOOBAR TOPIC</button>
+<button mat-raised-button (click)="sendMsg()">SEND FOOBAR MESSAGE</button>
+<button mat-raised-button (click)="unsubscribe()">UNSUBSCRIBE FROM FOOBAR TOPIC</button>
+
+<div fxLayout>
+    <div fxFlex="20">
+        <h1>Messages:</h1>
+        <p *ngFor="let message of messages">
+            {{message | json}}
+        </p>
+    </div>
+    <div>
+        <h1>Status info:</h1>
+        <p *ngFor="let statusMessage of status">
+            {{statusMessage}}
+        </p>
+    </div>
+</div>

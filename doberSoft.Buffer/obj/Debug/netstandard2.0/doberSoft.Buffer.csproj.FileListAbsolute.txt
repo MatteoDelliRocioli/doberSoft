@@ -1,0 +1,12 @@
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.csprojAssemblyReference.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.csproj.CoreCompileInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.AssemblyInfoInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.AssemblyInfo.cs
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\bin\Debug\netstandard2.0\doberSoft.Buffer.deps.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\bin\Debug\netstandard2.0\doberSoft.Buffer.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\bin\Debug\netstandard2.0\doberSoft.Buffer.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\bin\Debug\netstandard2.0\doberSoft.doberUtil.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\bin\Debug\netstandard2.0\doberSoft.doberUtil.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.csproj.CopyComplete
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.Buffer\obj\Debug\netstandard2.0\doberSoft.Buffer.pdb

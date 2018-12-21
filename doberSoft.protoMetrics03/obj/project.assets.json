@@ -1118,6 +1118,16 @@
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
       },
+      "doberSoft.doberUtil/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/doberSoft.doberUtil.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/doberSoft.doberUtil.dll": {}
+        }
+      },
       "doberSoft.Sensors/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -3944,6 +3954,11 @@
         "system.threading.threadpool.nuspec"
       ]
     },
+    "doberSoft.doberUtil/1.0.0": {
+      "type": "project",
+      "path": "../doberUtil/doberSoft.doberUtil.csproj",
+      "msbuildProject": "../doberUtil/doberSoft.doberUtil.csproj"
+    },
     "doberSoft.Sensors/1.0.0": {
       "type": "project",
       "path": "../doberSoft.Sensors/doberSoft.Sensors.csproj",
@@ -3961,7 +3976,8 @@
       "Microsoft.NETCore.App >= 2.1.0",
       "Newtonsoft.Json >= 12.0.1",
       "doberSoft.Sensors >= 1.0.0",
-      "doberSoft.Sensors.Core >= 1.0.0"
+      "doberSoft.Sensors.Core >= 1.0.0",
+      "doberSoft.doberUtil >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3999,6 +4015,9 @@
             },
             "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors\\doberSoft.Sensors.csproj": {
               "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors\\doberSoft.Sensors.csproj"
+            },
+            "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberUtil\\doberSoft.doberUtil.csproj": {
+              "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberUtil\\doberSoft.doberUtil.csproj"
             }
           }
         }

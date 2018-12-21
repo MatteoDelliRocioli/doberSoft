@@ -1,61 +1,98 @@
-import { Component } from '@angular/core';
-import {$} from 'protractor';
+import {Component, OnDestroy} from '@angular/core';
+import {ConnectionStatus, MqttService, SubscriptionGrant} from './ngx-mqtt-client';
+import {IClientOptions} from 'mqtt';
+
+export interface Foo {
+    bar: string;
+}
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
-  // https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1
+    messages: Array<Foo> = [];
 
+    status: Array<string> = [];
 
+    constructor(private _mqttService: MqttService) {
 
-
-
-
-
-
-
-
-
-
-
-  //Using the HiveMQ public Broker, with a random client Id
-  var client = new Messaging.Client("broker.mqttdashboard.com", 8000, "myclientid_" + parseInt(Math.random() * 100, 10));
-
-  //Gets  called if the websocket/mqtt connection gets disconnected for any reason
-  client.onConnectionLost = function (responseObject) {
-    //Depending on your scenario you could implement a reconnect logic here
-    alert("connection lost: " + responseObject.errorMessage);
-  };
-
-  //Gets called whenever you receive a message for your subscriptions
-  client.onMessageArrived = function (message) {
-    //Do something with the push message you received
-    $('#messages').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-  };
-
-  //Connect Options
-  var options = {
-    timeout: 3,
-    //Gets Called if the connection has sucessfully been established
-    onSuccess: function () {
-      alert("Connected");
-    },
-    //Gets Called if the connection could not be established
-    onFailure: function (message) {
-      alert("Connection failed: " + message.errorMessage);
+        /**
+         * Tracks connection status.
+         */
+        this._mqttService.status().subscribe((s: ConnectionStatus) => {
+            const status = s === ConnectionStatus.CONNECTED ? 'CONNECTED' : 'DISCONNECTED';
+            this.status.push(`Mqtt client connection status: ${status}`);
+        });
     }
-  };
 
-  //Creates a new Messaging.Message Object and sends it to the HiveMQ MQTT Broker
-  var publish = function (payload, topic, qos) {
-    //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
-    var message = new Messaging.Message(payload);
-    message.destinationName = topic;
-    message.qos = qos;
-    client.send(message);
-  }
+    /**
+     * Manages connection manually.
+     * If there is an active connection this will forcefully disconnect that first.
+     * @param {IClientOptions} config
+     */
+    connect(config: IClientOptions): void {
+        this._mqttService.connect(config);
+    }
+
+    /**
+     * Subscribes to fooBar topic.
+     * The first emitted value will be a {@see SubscriptionGrant} to confirm your subscription was successful.
+     * After that the subscription will only emit new value if someone publishes into the fooBar topic.
+     * */
+    subscribe(): void {
+        this._mqttService.subscribeTo<Foo>('fooBar')
+            .subscribe({
+                next: (msg: SubscriptionGrant | Foo) => {
+                    if (msg instanceof SubscriptionGrant) {
+                        this.status.push('Subscribed to fooBar topic!');
+                    } else {
+                        this.messages.push(msg);
+                    }
+                },
+                error: (error: Error) => {
+                    this.status.push(`Something went wrong: ${error.message}`);
+                }
+            });
+    }
+
+
+    /**
+     * Sends message to fooBar topic.
+     */
+    sendMsg(): void {
+        this._mqttService.publishTo<Foo>('fooBar', {bar: 'foo'}).subscribe({
+            next: () => {
+                this.status.push('Message sent to fooBar topic');
+            },
+            error: (error: Error) => {
+                this.status.push(`Something went wrong: ${error.message}`);
+            }
+        });
+    }
+
+    /**
+     * Unsubscribe from fooBar topic.
+     */
+    unsubscribe(): void {
+        this._mqttService.unsubscribeFrom('fooBar').subscribe({
+            next: () => {
+                this.status.push('Unsubscribe from fooBar topic');
+            },
+            error: (error: Error) => {
+                this.status.push(`Something went wrong: ${error.message}`);
+            }
+        });
+    }
+
+    /**
+     * The purpose of this is, when the user leave the app we should cleanup our subscriptions
+     * and close the connection with the broker
+     */
+    ngOnDestroy(): void {
+        this._mqttService.end();
+    }
+
 }

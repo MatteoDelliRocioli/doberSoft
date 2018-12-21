@@ -74,6 +74,7 @@ namespace doberSoft.protoMetrics03
             {
                 var sensor = ((ISensor)sender);
                 var json = sensor.ToJson();
+                Console.WriteLine($"id: {Util.iUID.NewId()}");
                 Console.WriteLine($"cars/AG673WK/sensors/{ sensor.Type }/{ sensor.Id} > |{json}|");
                 //ICommDriver CommDriver = new HttpCommDriver();
                 //ICommDriver CommDriver = new MqttCommDriver();
