@@ -201,9 +201,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffer.csproj",
-      "projectName": "doberSoft.Buffer",
-      "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffer.csproj",
+      "projectUniqueName": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffers.csproj",
+      "projectName": "doberSoft.Buffers",
+      "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffers.csproj",
       "packagesPath": "C:\\Users\\andb7\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\obj\\",
       "projectStyle": "PackageReference",

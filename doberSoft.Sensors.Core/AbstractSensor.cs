@@ -127,6 +127,11 @@ namespace doberSoft.Sensors.Core
             }
         }
 
+        public DateTime TimeStamp
+        {
+            get { return _signalTime; }
+        }
+
 
 
         /// <summary>

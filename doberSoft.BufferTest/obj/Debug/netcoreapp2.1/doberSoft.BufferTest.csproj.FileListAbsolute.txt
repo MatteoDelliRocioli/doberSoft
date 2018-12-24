@@ -1,0 +1,16 @@
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.BufferTest.deps.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.BufferTest.runtimeconfig.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.BufferTest.runtimeconfig.dev.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.BufferTest.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.BufferTest.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.Buffers.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.doberUtil.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.Buffers.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\bin\Debug\netcoreapp2.1\doberSoft.doberUtil.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.csprojAssemblyReference.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.csproj.CoreCompileInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.AssemblyInfoInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.AssemblyInfo.cs
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.csproj.CopyComplete
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.BufferTest\obj\Debug\netcoreapp2.1\doberSoft.BufferTest.pdb

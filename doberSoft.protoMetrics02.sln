@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Sensors.Core", "d
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Sensors", "doberSoft.Sensors\doberSoft.Sensors.csproj", "{DDFF89FA-DC9D-4DAB-B972-4A4A54EDDDB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Buffer", "doberSoft.Buffer\doberSoft.Buffer.csproj", "{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doberSoft.Buffers", "doberSoft.Buffer\doberSoft.Buffers.csproj", "{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doberSoft.BufferTest", "doberSoft.BufferTest\doberSoft.BufferTest.csproj", "{0CAE415F-486C-4A18-BDBD-6E9B87060719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A393DFE5-5422-4EFD-AC4F-6820EBEA01EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAE415F-486C-4A18-BDBD-6E9B87060719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAE415F-486C-4A18-BDBD-6E9B87060719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAE415F-486C-4A18-BDBD-6E9B87060719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAE415F-486C-4A18-BDBD-6E9B87060719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

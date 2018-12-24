@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\doberSoft.Buffer\doberSoft.Buffers.csproj" />
     <ProjectReference Include="..\doberSoft.Sensors.Core\doberSoft.Sensors.Core.csproj" />
     <ProjectReference Include="..\doberSoft.Sensors\doberSoft.Sensors.csproj" />
     <ProjectReference Include="..\doberUtil\doberSoft.doberUtil.csproj" />

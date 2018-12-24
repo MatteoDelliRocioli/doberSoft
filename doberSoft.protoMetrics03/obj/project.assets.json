@@ -1118,6 +1118,19 @@
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
       },
+      "doberSoft.Buffers/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "doberSoft.doberUtil": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/doberSoft.Buffers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/doberSoft.Buffers.dll": {}
+        }
+      },
       "doberSoft.doberUtil/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -3954,6 +3967,11 @@
         "system.threading.threadpool.nuspec"
       ]
     },
+    "doberSoft.Buffers/1.0.0": {
+      "type": "project",
+      "path": "../doberSoft.Buffer/doberSoft.Buffers.csproj",
+      "msbuildProject": "../doberSoft.Buffer/doberSoft.Buffers.csproj"
+    },
     "doberSoft.doberUtil/1.0.0": {
       "type": "project",
       "path": "../doberUtil/doberSoft.doberUtil.csproj",
@@ -3975,6 +3993,7 @@
       "M2MqttDotnetCore >= 1.0.8",
       "Microsoft.NETCore.App >= 2.1.0",
       "Newtonsoft.Json >= 12.0.1",
+      "doberSoft.Buffers >= 1.0.0",
       "doberSoft.Sensors >= 1.0.0",
       "doberSoft.Sensors.Core >= 1.0.0",
       "doberSoft.doberUtil >= 1.0.0"
@@ -4010,6 +4029,9 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+            "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffers.csproj": {
+              "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Buffer\\doberSoft.Buffers.csproj"
+            },
             "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors.Core\\doberSoft.Sensors.Core.csproj": {
               "projectPath": "C:\\Users\\andb7\\source\\repos\\doberSoft\\doberSoft.Sensors.Core\\doberSoft.Sensors.Core.csproj"
             },
