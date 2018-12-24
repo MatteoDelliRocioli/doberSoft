@@ -5,9 +5,13 @@ using System.Linq;
 
 namespace doberSoft.Buffers 
 {
-    public class BufferPacket<T>: IBufferPacket<T>//IPacket<T>, IPacketKey
+    /// <summary>
+    /// Base type for buffered data: implements IComparable<IPacketKey> and has a parametric type por Payload
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
+    public class BufferPacket<TPayload>: IBufferPacket<TPayload>
     {
-        internal BufferPacket(int priority, DateTime timeStamp, T payload)
+        internal BufferPacket(int priority, DateTime timeStamp, TPayload payload)
         {
             Priority = priority;
             TimeStamp = timeStamp;
@@ -25,7 +29,9 @@ namespace doberSoft.Buffers
 
         public DateTime TimeStamp { get; private set; }
 
-        public T Payload { get; private set; }
+        public TPayload Payload { get; private set; }
+
+        public int StageId { get; set; }
 
         public int CompareTo(IPacketKey other)
         {

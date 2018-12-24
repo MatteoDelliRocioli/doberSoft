@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using doberSoft.Util;
 
 namespace doberSoft.Buffers
 {
-    public class BufferWithPriority<T> : IBuffer<T>
+    /// <summary>
+    /// Buffer used to store data with Priority and TimeStamp and retrieve them ordered with a confirmable request
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
+    public class BufferWithPriority<TPayload> : IBuffer<TPayload>
     {
         // https://docs.microsoft.com/it-it/dotnet/api/system.collections.generic.sortedlist-2?view=netframework-4.7.2
 
-        SortedList<IPacketKey, IBufferPacket<T>> _DataQueues = new SortedList<IPacketKey, IBufferPacket<T>>();
-        Dictionary<int, IEnumerable<IBufferPacket<T>>> _Staged= new Dictionary<int, IEnumerable<IBufferPacket<T>>>();
+        List< IBufferPacket<TPayload>> _buffer = new List< IBufferPacket<TPayload>>();
 
         /// <summary>
         /// True if the buffer at least contains 1 data packet
@@ -20,7 +22,7 @@ namespace doberSoft.Buffers
         {
             get
             {
-                return _DataQueues.Count > 0;
+                return _buffer.Count > 0;
             }
         }
         /// <summary>
@@ -30,7 +32,7 @@ namespace doberSoft.Buffers
         {
             get
             {
-                return _DataQueues.Count == 0;
+                return _buffer.Count == 0;
             }
         }
 
@@ -39,84 +41,77 @@ namespace doberSoft.Buffers
         {
             get
             {
-                return _DataQueues.Count;
+                return _buffer.Count;
             }
         }
 
 
-        public void Cancel(int id)
+        public void Cancel(int stageId)
         {
-            // elimina la lista key
-            _Staged.Remove(id);
+            // Unstages all the packets with Stage = stageId
+            var staged = (from p in _buffer where p.StageId == stageId orderby p.Key select p);
+            foreach (var item
+                in staged)
+            {
+                item.StageId = 0;
+            }
         }
 
 
-        public void Confirm(int id)
+        public void Confirm(int stageId)
         {
             // https://stackoverflow.com/questions/853526/using-linq-to-remove-elements-from-a-listt
-            // ritrova la lista (id) e la rimuove da _Queue
-            IEnumerable<IBufferPacket<T>> setToRemove;
-            if ( _Staged.TryGetValue(id, out setToRemove))
-            {
-                foreach (var item in setToRemove)
-                {
-                    if (item != null){
-                    _DataQueues.Remove(item.Key); }
-                }
-                _Staged.Remove(id);
-            }
+            // removes all the staged packets with Stage = stageId
+            //Console.Write($"Confirmed {_buffer.Count} >");
+            _buffer.RemoveAll(x => x.StageId == stageId);
+            //Console.WriteLine($":> {_buffer.Count} |");
+
         }
 
 
         /// <summary>
-        /// Returns the data packet with the higher priority
-        /// The retrieved data packet will be no longer available in the Buffer
+        /// Stages N data with the higher priority and older Timestamp into a packet 
         /// </summary>
-        /// <param name="id">A UID for the operation, used to cancel or confirm
+        /// <param name="stageId">A UID for the operation, used to cancel or confirm
         /// the operation after the fire attempt</param>
-        /// <param name="MaxCount">The max number of packets to return at once</param>
+        /// <param name="maxCount">The max number of data to return at once</param>
         /// <returns>An array of data rapresenting the data packet</returns>
-        public IEnumerable<IBufferPacket<T>> Get(out int id, int MaxCount = -1)
+        public IEnumerable<IBufferPacket<TPayload>> Get(out int stageId, int maxCount = -1)
         {
             // get an Unique Identifier for the operation
-            id = iUID.NewId();
+            stageId = iUID.NewId();
 
-            if (MaxCount == -1 || MaxCount > _DataQueues.Count)
+            if (maxCount == -1 || maxCount > _buffer.Count)
             {
-                MaxCount = _DataQueues.Count;
+                maxCount = _buffer.Count;
             }
 
-            // gets the first MaxCount elements from the queue
-            // stores the elements in a temporary array associated to the id
-            //var staged1 = _DataQueues.OrderBy(p => p.Key)
-            //                        .Select(p=>p).Take(MaxCount);//.ToArray();
-            var staged = (from p in _DataQueues.Values orderby p.Key select p).Take(MaxCount);//.ToArray();
+            // gets the first MaxCount elements from the buffer
+            // stores the elements in a temporary array associated to the stageId
+            var staged = (from p in _buffer where p.StageId==0 orderby p.Key select p).Take(maxCount).ToList();
             foreach (var item in staged)
             {
-                Console.WriteLine($"staged {item.Key.Priority}.{item.Key.TimeStamp}:  {item.Topic} :  {item.Payload}");
+                item.StageId = stageId;
+                //Console.WriteLine($"staged({item.Stage}) {item.Key.Priority}.{item.Key.TimeStamp}:  {item.Topic} :  {item.Payload}");
             }
-            _Staged.Add(id, staged);
 
             // returns the retrieved elements
             return staged.ToArray();
         }
 
         /// <summary>
-        /// Appends a data packet to his priority Queue.
-        /// There will be several Queues ordered by priority: lower values first
+        /// Adds a data packet to the internal Queue and returns it
         /// </summary>
-        /// <param name="data">The data to be stored into the priority Queue</param>
-        /// <param name="priority">The priority order: the lower the value, the higher the priority</param>
-        public IBufferPacket<T> Push(int priority, DateTime timeStamp, T payload)
+        /// <param name="priority"></param>
+        /// <param name="timeStamp"></param>
+        /// <param name="payload"></param>
+        /// <returns>The new data</returns>
+        public IBufferPacket<TPayload> Push(int priority, DateTime timeStamp, TPayload payload)
         {
             // append the data to the data packet list
-            var packet = new BufferPacket<T>(priority, timeStamp, payload);
-            Console.WriteLine($"Push {packet.Topic}: {packet.Payload}");
-            if (_DataQueues.Keys.Contains(packet.Key))
-            {
-                Console.WriteLine($"   ! {packet.Topic}: {packet.Payload}");  
-            }
-            _DataQueues.Add(packet.Key, packet);
+            var packet = new BufferPacket<TPayload>(priority, timeStamp, payload);
+            _buffer.Add(packet);
+            Console.WriteLine($"Push({_buffer.Count}) {packet.Topic}: {packet.Payload}");
             return packet;
         }
 
@@ -124,9 +119,9 @@ namespace doberSoft.Buffers
 
         public void Print()
         {
-            foreach (var item in _DataQueues)
+            foreach (var item in _buffer)
             {
-                Console.WriteLine($"    {item.Value.Payload}");
+                Console.WriteLine($"    {item.Payload}");
             }
         }
 

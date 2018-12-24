@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace doberSoft.Buffers
 {
@@ -12,13 +10,14 @@ namespace doberSoft.Buffers
     public interface IPacket
     {
         IPacketKey Key { get; }
+        int StageId { get; set; }
         string Topic { get; set; }
     }
-    public interface IPacket<T>: IPacket
+    public interface IPacket<TPayload> : IPacket
     {
-        T Payload { get; }
+        TPayload Payload { get; }
     }
-    public interface IBufferPacket<T> : IPacket<T>, IPacketKey
+    public interface IBufferPacket<TPayload> : IPacket<TPayload>, IPacketKey
     {
     }
 }
