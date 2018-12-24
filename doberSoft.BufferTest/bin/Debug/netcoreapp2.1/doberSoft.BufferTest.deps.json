@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "doberSoft.BufferTest/1.0.0": {
+        "dependencies": {
+          "doberSoft.Buffers": "1.0.0"
+        },
+        "runtime": {
+          "doberSoft.BufferTest.dll": {}
+        }
+      },
+      "doberSoft.Buffers/1.0.0": {
+        "dependencies": {
+          "doberSoft.doberUtil": "1.0.0"
+        },
+        "runtime": {
+          "doberSoft.Buffers.dll": {}
+        }
+      },
+      "doberSoft.doberUtil/1.0.0": {
+        "runtime": {
+          "doberSoft.doberUtil.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "doberSoft.BufferTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "doberSoft.Buffers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "doberSoft.doberUtil/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

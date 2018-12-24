@@ -28,6 +28,7 @@ namespace doberSoft.Sensors.Core
         /// </summary>
         /// <returns></returns>
         string ToJson();
+        DateTime TimeStamp { get; }
         void On();
         void Off();
         void SetScale(IScale scale);

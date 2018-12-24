@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace doberSoft.Buffer
+namespace doberSoft.Buffers
 {
-    public interface IDataBuffer
+    public interface IBuffer<T>
     {
-        void Push(IBufferData data);
-        IBufferData[] Get(out int id, int MaxCount = -1);
+        IBufferPacket<T> Push(int priority, DateTime timeStamp, T payload);
+        IEnumerable<IBufferPacket<T>> Get(out int id, int MaxCount = -1);
         void Confirm(int id);
         void Cancel(int id);
         bool NotEmpty { get; }

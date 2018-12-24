@@ -4,11 +4,14 @@ using doberSoft.Sensors.Core;
 using doberSoft.Sensors.Core.Rules;
 using doberSoft.Sensors.ScaleFunctions;
 using System;
+using doberSoft.Buffers;
+using System.Timers;
 
 namespace doberSoft.protoMetrics03
 {
     class Program
     {
+        static BufferWithPriority<string> buffer = new BufferWithPriority<string>();
         static void Main(string[] args)
         {
 
@@ -64,27 +67,51 @@ namespace doberSoft.protoMetrics03
 
             logicIO.On();
             
+            CycleTask(2000, () => Fire());
             Console.ReadKey();
         }
 
 
         private static void Generic_ValueChanged(object sender, SensorEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 var sensor = ((ISensor)sender);
-                var json = sensor.ToJson();
-                Console.WriteLine($"id: {Util.iUID.NewId()}");
-                Console.WriteLine($"cars/AG673WK/sensors/{ sensor.Type }/{ sensor.Id} > |{json}|");
+                string json = sensor.ToJson();
+                string topic = $"cars/AG673WK/sensors/{ sensor.Type }/{ sensor.Id}";
+
+                //Console.WriteLine($"id: {Util.iUID.NewId()}");
+                Console.WriteLine($"GEN  {topic} > |{json}|");
+                buffer.Push(1,DateTime.Now, sensor.ToJson()).Topic = topic;
+
+            //}
+            //catch
+            //{
+            //    Console.WriteLine("Errore nella generazione del json");
+            //}
+
+        }
+        public static void Fire()
+        {
+            int id;
+            var b = buffer.Get(out id);
+            foreach (var item in b)
+            {
+                if (item == null) { Console.WriteLine($"{id}FIRE: null"); }
+                else{
+                Console.WriteLine($"{id}FIRE {item.Topic } >>> |{ item.Payload}|");
+                }
                 //ICommDriver CommDriver = new HttpCommDriver();
                 //ICommDriver CommDriver = new MqttCommDriver();
                 //CommDriver.Send(json, "cars/AG673WK/sensors/" + sensor.Name + "/" + sensor.Id);
             }
-            catch
-            {
-                Console.WriteLine("Errore nella generazione del json");
-            }
-
+            buffer.Confirm(id);
+        }
+        public static void CycleTask(double interval, Action action)
+        {
+            var timer = new Timer(interval);
+            timer.Elapsed += (o, e) => action.Invoke();
+            timer.Start();
         }
 
     }
