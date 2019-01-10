@@ -1,4 +1,5 @@
 ﻿using doberSoft.protoMetrics03.layer0;
+using doberSoft.protoMetrics03.layer3;
 using doberSoft.Sensors;
 using doberSoft.Sensors.Core;
 using doberSoft.Sensors.Core.Rules;
@@ -12,6 +13,10 @@ namespace doberSoft.protoMetrics03
     class Program
     {
         static BufferWithPriority<string> buffer = new BufferWithPriority<string>();
+
+        //static Sender Sender = new Sender(new HttpCommDriver(), buffer);
+        static Sender Sender = new Sender(new MqttCommDriver(), buffer);
+        //static ICommDriver CommDriver = new HttpCommDriver();
         static void Main(string[] args)
         {
 
@@ -67,7 +72,7 @@ namespace doberSoft.protoMetrics03
 
             logicIO.On();
             
-            CycleTask(2000, () => Fire());
+            //CycleTask(2000, () => Fire());
             Console.ReadKey();
         }
 
@@ -84,51 +89,57 @@ namespace doberSoft.protoMetrics03
             string json = sensor.ToJson();
             string topic = $"cars/AG673WK/sensors/{ sensor.Type }/{ sensor.Id}";
             Console.WriteLine($"GEN  {topic} > |{json}|");
-            buffer.Push(1,DateTime.Now, sensor.ToJson()).Topic = topic;
-
+            // push the payload to the buffer: the buffer will create a packet and return it in
+            // a IBufferPacket<string> reference
+            // so we can also and store the associated topic with it  
+            buffer.NewPacket(1, DateTime.Now, sensor.ToJson()).Topic = topic;
+            buffer.Push();
         }
 
-        /// <summary>
-        /// Message sender: this is invoked with a certain logic, decided on the requirements
-        /// and on the limits of the situation, of the sender, etc.
-        /// IF there is a connection
-        ///     we get the packets from the buffer 
-        ///     AND try to send the packets
-        ///     IF we succeed
-        ///         we confrim the operation (and the buffer will remove tha packets)
-        ///     ELSE
-        ///         we cancel the operation
-        /// </summary>
-        public static void Fire()
-        {
+        ///// <summary>
+        ///// Message sender: this is invoked with a certain logic, decided on the requirements
+        ///// and on the limits of the situation, of the sender, etc.
+        ///// IF there is a connection
+        /////     we get the packets from the buffer 
+        /////     AND try to send the packets
+        /////     IF we succeed
+        /////         we confrim the operation (and the buffer will remove tha packets)
+        /////     ELSE
+        /////         we cancel the operation
+        ///// </summary>
+        //public static void Fire()
+        //{
 
-            int id;
-            var b = buffer.Get(out id);
 
-            // check the console
-            foreach (var item in b)
-            {
-                if (item == null) { Console.WriteLine($"{id}FIRE: null"); }
-                else {
-                    Console.WriteLine($"{id}FIRE {item.Topic } >>> |{ item.Payload}|");
-                }
-            }// end check
+        //    // get the buffered messages in a array, identified with a <Id> and pass it to the COMM Driver
+        //    // when the messages will be all sent then call buffer.Confirm(id) to cause the buffer
+        //    // to discard the sent messages
 
-            //ICommDriver CommDriver = new HttpCommDriver();
-            //ICommDriver CommDriver = new MqttCommDriver();
-            //if (CommDriver.Send(b))
-            //{
-                buffer.Confirm(id);
-            //} else {
-            //    buffer.Cancel(id))
-            //}
-        }
-        public static void CycleTask(double interval, Action action)
-        {
-            var timer = new Timer(interval);
-            timer.Elapsed += (o, e) => action.Invoke();
-            timer.Start();
-        }
+        //    int id;
+        //    var b = buffer.Get(out id);
+
+        //    foreach (var p in b)
+        //    {
+        //        if (p == null) { Console.WriteLine($"{id}FIRE: null"); }
+        //        else {
+        //            //Console.WriteLine($"{id}FIRE {p.Topic } >>> |{ p.Payload}|");
+
+        //            if (!CommDriver.Send(p.Payload, p.Topic))
+        //            {
+        //                buffer.Cancel(id);
+        //                return;
+        //            }
+        //        }
+        //    }
+        //    buffer.Confirm(id);
+
+        //}
+        //public static void CycleTask(double interval, Action action)
+        //{
+        //    var timer = new Timer(interval);
+        //    timer.Elapsed += (o, e) => action.Invoke();
+        //    timer.Start();
+        //}
 
     }
 }

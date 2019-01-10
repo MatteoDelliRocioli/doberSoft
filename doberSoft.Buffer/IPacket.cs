@@ -12,6 +12,7 @@ namespace doberSoft.Buffers
         IPacketKey Key { get; }
         int StageId { get; set; }
         string Topic { get; set; }
+
     }
     public interface IPacket<TPayload> : IPacket
     {

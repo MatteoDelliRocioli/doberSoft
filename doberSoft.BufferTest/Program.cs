@@ -14,8 +14,10 @@ namespace doberSoft.BufferTest
             var t = DateTime.Now;
             int id;
             BufferWithPriority<string> buffer = new BufferWithPriority<string>();
-            buffer.Push(1, t, "ciao");
-            buffer.Push(1, t, "miao");
+            buffer.NewPacket(1, t, "ciao");
+            buffer.Push();
+            buffer.NewPacket(1, t, "miao");
+            buffer.Push();
             var b = buffer.Get(out id);
             foreach (var item in b)
             {

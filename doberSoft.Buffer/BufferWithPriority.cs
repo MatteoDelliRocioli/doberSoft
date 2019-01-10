@@ -15,43 +15,29 @@ namespace doberSoft.Buffers
 
         List< IBufferPacket<TPayload>> _buffer = new List< IBufferPacket<TPayload>>();
 
+        // temp built packet
+        private BufferPacket<TPayload> packet;
+
+        public event EventHandler NewMessage;
+
         /// <summary>
         /// True if the buffer at least contains 1 data packet
         /// </summary>
-        public bool NotEmpty
-        {
-            get
-            {
-                return _buffer.Count > 0;
-            }
-        }
+        public bool NotEmpty { get => _buffer.Count > 0; }
+
         /// <summary>
         /// True if the buffer doesn't contain any data packet
         /// </summary>
-        public bool Empty
-        {
-            get
-            {
-                return _buffer.Count == 0;
-            }
-        }
+        public bool Empty { get => _buffer.Count == 0; }
 
-
-        public int Length
-        {
-            get
-            {
-                return _buffer.Count;
-            }
-        }
+        public int Length { get => _buffer.Count; }
 
 
         public void Cancel(int stageId)
         {
             // Unstages all the packets with Stage = stageId
             var staged = (from p in _buffer where p.StageId == stageId orderby p.Key select p);
-            foreach (var item
-                in staged)
+            foreach (var item in staged)
             {
                 item.StageId = 0;
             }
@@ -88,7 +74,8 @@ namespace doberSoft.Buffers
 
             // gets the first MaxCount elements from the buffer
             // stores the elements in a temporary array associated to the stageId
-            var staged = (from p in _buffer where p.StageId==0 orderby p.Key select p).Take(maxCount).ToList();
+           // var staged = (from p in _buffer where p.StageId == 0 orderby p.Key select p).Take(maxCount).ToList();
+            var staged =_buffer.Where(p => p.StageId == 0).OrderBy(p => p.Key).Take(maxCount).ToList();
             foreach (var item in staged)
             {
                 item.StageId = stageId;
@@ -106,15 +93,18 @@ namespace doberSoft.Buffers
         /// <param name="timeStamp"></param>
         /// <param name="payload"></param>
         /// <returns>The new data</returns>
-        public IBufferPacket<TPayload> Push(int priority, DateTime timeStamp, TPayload payload)
+        public IBufferPacket<TPayload> NewPacket(int priority, DateTime timeStamp, TPayload payload)
         {
-            // append the data to the data packet list
-            var packet = new BufferPacket<TPayload>(priority, timeStamp, payload);
-            _buffer.Add(packet);
-            Console.WriteLine($"Push({_buffer.Count}) {packet.Topic}: {packet.Payload}");
+            packet = new BufferPacket<TPayload>(priority, timeStamp, payload);
             return packet;
         }
-
+        public void Push()
+        {
+            // append the data to the data packet list
+            _buffer.Add(packet);
+            Console.WriteLine($"NewPacket({_buffer.Count}) {packet.Topic}: {packet.Payload}");
+            NewMessage?.Invoke(this, new EventArgs());
+        }
 
 
         public void Print()

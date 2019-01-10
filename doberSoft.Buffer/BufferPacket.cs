@@ -18,10 +18,7 @@ namespace doberSoft.Buffers
             Payload = payload;
         }
 
-        public IPacketKey Key
-        {
-            get { return this; }
-        }
+        public IPacketKey Key { get => this; }
 
         public string Topic { get; set; }
 

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace doberSoft.protoMetrics03.layer3
 {
-    interface ICommDriver
+    public interface ICommDriver
     {
+        //bool Connect();
         bool Send(string payload, string destination);
     }
 }
