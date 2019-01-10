@@ -7,6 +7,7 @@ namespace doberSoft.protoMetrics03.layer3
 {
     public class Sender
     {
+
         private ICommDriver CommDriver;
         //private IBuffer<string> Buffer;
 
@@ -18,16 +19,16 @@ namespace doberSoft.protoMetrics03.layer3
                 // object sender, EventArgs e
 
                 int id;
-                var b = buffer.Get(out id);
+                var messages = buffer.Get(out id);
 
-                foreach (var p in b)
+                foreach (var message in messages)
                 {
-                    if (p == null) { Console.WriteLine($"{id}FIRE: null"); }
+                    if (message == null) { Console.WriteLine($"{id}FIRE: null"); }
                     else
                     {
-                        //Console.WriteLine($"{id}FIRE {p.Topic } >>> |{ p.Payload}|");
+                        //Console.WriteLine($"{id}FIRE {message.Topic } >>> |{ message.Payload}|");
 
-                        if (!CommDriver.Send(p.Payload, p.Topic))
+                        if (!CommDriver.Send(message.Payload, message.Topic))
                         {
                             buffer.Cancel(id);
                             return;

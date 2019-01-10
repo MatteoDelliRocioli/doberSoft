@@ -1,0 +1,10 @@
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\bin\Debug\netcoreapp2.1\doberSoft.AMQP.send.deps.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\bin\Debug\netcoreapp2.1\doberSoft.AMQP.send.runtimeconfig.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\bin\Debug\netcoreapp2.1\doberSoft.AMQP.send.runtimeconfig.dev.json
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\bin\Debug\netcoreapp2.1\doberSoft.AMQP.send.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\obj\Debug\netcoreapp2.1\doberSoft.AMQP.send.csproj.CoreCompileInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\obj\Debug\netcoreapp2.1\doberSoft.AMQP.send.AssemblyInfoInputs.cache
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\obj\Debug\netcoreapp2.1\doberSoft.AMQP.send.AssemblyInfo.cs
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\bin\Debug\netcoreapp2.1\doberSoft.AMQP.send.pdb
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\obj\Debug\netcoreapp2.1\doberSoft.AMQP.send.dll
+C:\Users\andb7\source\repos\doberSoft\doberSoft.AMQP.send\obj\Debug\netcoreapp2.1\doberSoft.AMQP.send.pdb

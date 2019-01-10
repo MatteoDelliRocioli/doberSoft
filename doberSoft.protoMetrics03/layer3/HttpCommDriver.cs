@@ -9,6 +9,9 @@ namespace doberSoft.protoMetrics03.layer3
     class HttpCommDriver : ICommDriver
     {
         string EndPoint = "http://192.168.101.72:8080/";
+
+        public event EventHandler<object> MessageReceived;
+
         public bool Send(string payload, string destination)
         {
 
@@ -29,6 +32,21 @@ namespace doberSoft.protoMetrics03.layer3
             Console.WriteLine("  response: " + httpResponse.StatusCode);
             httpResponse.Close();
             return false;
+        }
+
+        public bool Subscribe(string topic, Action<object> action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Subscribe(string topic)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unsubscribe(string topic)
+        {
+            throw new NotImplementedException();
         }
     }
 }
